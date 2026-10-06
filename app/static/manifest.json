@@ -1,0 +1,16 @@
+{
+  "name": "Eyes Up - Offline Bird Identifier",
+  "short_name": "Eyes Up",
+  "description": "Offline bird-call companion that wants you to put the phone away",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f12",
+  "theme_color": "#0b0f12",
+  "icons": [
+    {
+      "src": "/static/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

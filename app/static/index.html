@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Eyes Up - Offline Bird Identifier</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="manifest" href="/static/manifest.json">
+  <link rel="icon" type="image/svg+xml" href="/static/icon.svg">
+  <meta name="theme-color" content="#0b0f12">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <img src="/static/icon.svg" alt="Eyes Up Logo" class="logo-icon">
+        <div>
+          <h1>Eyes Up</h1>
+        </div>
+        <span class="offline-pill">OFFLINE</span>
+      </div>
+      <div class="header-actions">
+        <button id="btn-screen-off" class="btn-icon" title="Toggle Screen-Off Mode">Screen-Off: OFF</button>
+      </div>
+    </header>
+
+    <!-- Gemma Daily Outing Nudge -->
+    <section class="nudge-card">
+      <div class="nudge-title">Daily Nudge (Gemma)</div>
+      <div id="nudge-text" class="nudge-text">Loading local seasonal advice...</div>
+    </section>
+
+    <!-- Touch Grass Outing Tracker -->
+    <section class="outing-panel">
+      <div class="outing-stats">
+        <div class="outing-label">Touch Grass Ratio (7d)</div>
+        <div id="touch-grass-score" class="outing-score">--</div>
+      </div>
+      <button id="btn-outing" class="btn-outing">Start Outing</button>
+    </section>
+
+    <!-- Main Record Action -->
+    <section class="record-section">
+      <div class="record-btn-wrapper">
+        <div class="pulse-ring"></div>
+        <button id="btn-record" class="btn-record">
+          <span style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em;">TAP TO</span>
+          <span>RECORD</span>
+          <span id="record-timer" style="font-size:0.95rem; font-weight:700;">30s</span>
+        </button>
+      </div>
+      <div class="record-subtext">Tap Record, put phone in pocket, look up.</div>
+      <div id="upload-link" class="upload-link">Or upload an audio clip</div>
+      <input type="file" id="audio-file-input" accept="audio/*" style="display:none;">
+    </section>
+
+    <!-- Single Result Card -->
+    <section id="result-card" class="result-card">
+      <!-- Empty State -->
+      <div id="result-empty" class="result-empty">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2">
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="22"/>
+        </svg>
+        <span>Ready. Record 30 seconds of nature sound.</span>
+      </div>
+
+      <!-- Analyzing State -->
+      <div id="result-analyzing" class="result-analyzing" style="display:none;">
+        <div class="spinner"></div>
+        <span>Analyzing with BirdNET & Gemma...</span>
+      </div>
+
+      <!-- Content State -->
+      <div id="result-content" style="display:none; flex-direction:column; gap:12px;">
+        <div class="result-header">
+          <div class="bird-names">
+            <div id="card-common-name" class="common-name">American Robin</div>
+            <div id="card-scientific-name" class="scientific-name">Turdus migratorius</div>
+          </div>
+          <div class="badges">
+            <span id="card-conf-badge" class="conf-badge">92% match</span>
+            <span id="card-new-badge" class="new-badge">NEW SPECIES!</span>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <strong>What to look & listen for (Gemma)</strong>
+          <span id="card-tip">Warm brick-red breast on open lawns and a cheerful caroling song.</span>
+        </div>
+
+        <div id="card-other-chips" class="other-chips"></div>
+
+        <div class="card-actions">
+          <button id="btn-replay-tts" class="btn-tts">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+            </svg>
+            Replay Audio
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Life List Drawer Toggle -->
+    <div class="drawer-toggle">
+      <button id="btn-toggle-list" class="btn-text">
+        View Life List (<span id="life-list-count">0 species</span>)
+      </button>
+    </div>
+
+    <!-- Life List Panel -->
+    <div id="life-list-panel" class="life-list-panel">
+      <div class="life-list-header">
+        <span>Your Recorded Life List</span>
+      </div>
+      <div id="life-list-items" class="life-list-items"></div>
+    </div>
+  </div>
+
+  <!-- Screen-Off Fullscreen Pocket Dimmer -->
+  <div id="screen-off-overlay" class="screen-off-overlay">
+    <div class="screen-off-hint">Eyes Up: Screen Off Mode</div>
+    <div style="font-size: 0.72rem; color: #334155; margin-top: 8px;">Tap anywhere to wake screen</div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
