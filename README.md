@@ -47,8 +47,8 @@ Most nature apps try to keep your eyes glued to glass: endless infinite feeds, s
 
 ### 2. Install Dependencies
 ```bash
-git clone https://github.com/your-username/eyes-up.git
-cd eyes-up
+git clone https://github.com/kishorekrrish3/Eyes-Up.git
+cd Eyes-Up
 
 # Create virtual environment
 python -m venv .venv

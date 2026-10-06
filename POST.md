@@ -39,14 +39,14 @@ Here is the one-screen workflow in action:
 
 The complete source code is open-source under the MIT license:
 
-- **Repository**: [https://github.com/your-username/eyes-up](https://github.com/your-username/eyes-up) [TODO: Update with your GitHub repo URL]
+- **Repository**: [https://github.com/kishorekrrish3/Eyes-Up](https://github.com/kishorekrrish3/Eyes-Up)
 - **Stack**: Python 3.12, FastAPI, SQLite, BirdNET-Analyzer (Google LiteRT TFLite runtime), Ollama (Gemma 2: 2B), Vanilla HTML5/JS PWA.
 
 To run it locally in one command:
 
 ```bash
-git clone https://github.com/your-username/eyes-up.git
-cd eyes-up
+git clone https://github.com/kishorekrrish3/Eyes-Up.git
+cd Eyes-Up
 python -m venv .venv
 source .venv/bin/activate  # On Windows: .\.venv\Scripts\activate
 pip install -r requirements.txt
