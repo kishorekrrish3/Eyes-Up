@@ -1,7 +1,10 @@
-# Eyes Up 🌿
+<div align="center">
+  <h1>Eyes Up</h1>
+  <p><strong>An offline-first bird-call companion that helps you put the phone away.</strong></p>
+  <p>Listen, identify local bird calls, hear a short field cue, and spend more of the outing looking at the world around you.</p>
+</div>
 
-> **An offline bird-call companion that wants you to put the phone away.**  
-> Built for the Hacktoberfest 2026 "Touch Grass" Challenge.
+> Originally built for the Hacktoberfest 2026 “Touch Grass” challenge. This repository is now documented as a standalone project.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
@@ -13,20 +16,22 @@
 
 ## The Philosophy: Screen as the Shortest Part
 
-Most nature apps try to keep your eyes glued to glass: endless infinite feeds, social leaderboards, species galleries, and constant push notifications. 
+Most nature apps encourage repeated screen interactions. Eyes Up is designed around a shorter interaction: record a sound, get a grounded cue, and return your attention to the outdoors. 
 
 **Eyes Up does the opposite.**
 
 1. Tap **Record** (30s) or start an Outing.
 2. Put the phone in your pocket and look up into the canopy.
-3. The app records ambient audio, identifies calling birds locally using **BirdNET**, generates a strict 2-sentence field tip using **Gemma**, speaks the result aloud via **Text-to-Speech**, and dims the screen to black.
+3. The app records ambient audio, identifies likely bird calls using **BirdNET**, can generate a short field tip using **Gemma**, speaks the result through a configured text-to-speech engine, and dims the screen.
 4. It tracks your **Touch Grass Score**: outdoor minutes versus screen minutes.
 
-**100% Offline. Zero cloud telemetry. Zero subscriptions.**
+**Offline-first by design.** Bird identification and local journaling are intended to run on-device/local infrastructure. Optional integrations (including ElevenLabs, if configured) may require network access; disable them for a strictly offline outing.
 
 ---
 
 ## Architecture at a Glance
+
+> **Project status:** prototype for learning and field experimentation. Bird identifications can be wrong and depend on recording quality, model coverage, and local conditions. Treat predictions as suggestions, not definitive ecological observations.
 
 - **Bird Acoustic Classification**: Cornell Lab's BirdNET model running locally via Google LiteRT (TFLite CPU delegate).
 - **On-Device LLM**: Gemma 2 (2B) running locally via [Ollama](https://ollama.com) for strictly grounded field cues, daily outing nudges, and short journal entries.
